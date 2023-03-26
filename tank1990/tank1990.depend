@@ -1,0 +1,86 @@
+# depslib dependency file v1.0
+1679383417 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\game.cpp
+	"game.h"
+	"gameconfig.h"
+	"renderer.h"
+	"main.h"
+	"playing.h"
+	<bits/stdc++.h>
+	<chrono>
+	<SDL.h>
+	<SDL_image.h>
+
+1679297535 c:\users\admin\desktop\cplusplus\mainprj\tank1990\game.h
+	"appstate.h"
+	<SDL.h>
+	"renderer.h"
+
+1679824857 c:\users\admin\desktop\cplusplus\mainprj\tank1990\gameconfig.h
+	<SDL.h>
+	<string>
+
+1679292370 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\main.cpp
+	<bits/stdc++.h>
+	"main.h"
+	"renderer.h"
+	<SDL.h>
+
+1679824857 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\gameconfig.cpp
+	"gameconfig.h"
+
+1679380034 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\renderer.cpp
+	"renderer.h"
+	"gameconfig.h"
+	"main.h"
+	<bits/stdc++.h>
+	<SDL_image.h>
+	<SDL.h>
+
+1679369031 c:\users\admin\desktop\cplusplus\mainprj\tank1990\renderer.h
+	<SDL.h>
+
+1679825662 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\player.cpp
+	"player.h"
+	"renderer.h"
+	"main.h"
+	"gameconfig.h"
+	"bullet.h"
+	<vector>
+	<iostream>
+
+1679825124 c:\users\admin\desktop\cplusplus\mainprj\tank1990\player.h
+	"bullet.h"
+	<vector>
+	<SDL.h>
+
+1679825759 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\playing.cpp
+	"playing.h"
+	"menu.h"
+	"renderer.h"
+	"main.h"
+	<iostream>
+
+1679298024 c:\users\admin\desktop\cplusplus\mainprj\tank1990\playing.h
+	"appstate.h"
+	"player.h"
+
+1679369303 c:\users\admin\desktop\cplusplus\mainprj\tank1990\main.h
+	"game.h"
+
+1679298024 c:\users\admin\desktop\cplusplus\mainprj\tank1990\appstate.h
+	<SDL.h>
+
+1679295427 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\menu.cpp
+	"menu.h"
+	"playing.h"
+
+1679295289 c:\users\admin\desktop\cplusplus\mainprj\tank1990\menu.h
+	"appstate.h"
+
+1679825681 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\bullet.cpp
+	"bullet.h"
+	"renderer.h"
+
+1679825662 c:\users\admin\desktop\cplusplus\mainprj\tank1990\bullet.h
+	<SDL.h>
+
