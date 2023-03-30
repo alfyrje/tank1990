@@ -1,29 +1,18 @@
 #ifndef player_h
 #define player_h
 
-#include "bullet.h"
-#include<vector>
+#include "tank.h"
 #include<SDL.h>
 
-class Player {
+class Player : public Tank {
 public:
     Player();
     ~Player();
-    int lives;
     int stars;
-    int direction;
     int fireTime;
     int maxBullet;
-    double speed;
-    double pos_x;
-    double pos_y;
-    SDL_Rect dest_rect;
-    SDL_Rect src_rect;
     void update(int dt);
-    void draw();
-    void setDirection(int d);
     Bullet* fire();
-    std::vector<Bullet*> bullets;
 };
 
 #endif

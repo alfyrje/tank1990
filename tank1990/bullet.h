@@ -1,9 +1,10 @@
 #ifndef bullet_h
 #define bullet_h
 
+#include "object.h"
 #include<SDL.h>
 
-class Bullet {
+class Bullet : public Object {
 public:
     Bullet();
     Bullet(double x, double y);
@@ -13,11 +14,11 @@ public:
     void draw();
     int direction;
     double speed;
-    double pos_x;
-    double pos_y;
-    bool to_erased;
-    SDL_Rect src_rect;
-    SDL_Rect dest_rect;
+    bool collide;
+    void destroy();
+    int destroyTime;
+    int destroyFrame;
+
 };
 
 #endif

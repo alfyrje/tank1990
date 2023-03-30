@@ -42,12 +42,16 @@
 		<Unit filename="main.h" />
 		<Unit filename="menu.cpp" />
 		<Unit filename="menu.h" />
+		<Unit filename="object.cpp" />
+		<Unit filename="object.h" />
 		<Unit filename="player.cpp" />
 		<Unit filename="player.h" />
 		<Unit filename="playing.cpp" />
 		<Unit filename="playing.h" />
 		<Unit filename="renderer.cpp" />
 		<Unit filename="renderer.h" />
+		<Unit filename="tank.cpp" />
+		<Unit filename="tank.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>

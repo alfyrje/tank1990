@@ -39,28 +39,31 @@
 1679369031 c:\users\admin\desktop\cplusplus\mainprj\tank1990\renderer.h
 	<SDL.h>
 
-1679825662 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\player.cpp
+1680092683 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\player.cpp
 	"player.h"
 	"renderer.h"
 	"main.h"
 	"gameconfig.h"
 	"bullet.h"
+	<algorithm>
 	<vector>
 	<iostream>
 
-1679825124 c:\users\admin\desktop\cplusplus\mainprj\tank1990\player.h
-	"bullet.h"
-	<vector>
+1680014544 c:\users\admin\desktop\cplusplus\mainprj\tank1990\player.h
+	"tank.h"
 	<SDL.h>
 
-1679825759 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\playing.cpp
+1680139720 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\playing.cpp
 	"playing.h"
 	"menu.h"
 	"renderer.h"
 	"main.h"
+	"object.h"
+	"gameconfig.h"
 	<iostream>
 
-1679298024 c:\users\admin\desktop\cplusplus\mainprj\tank1990\playing.h
+1680094664 c:\users\admin\desktop\cplusplus\mainprj\tank1990\playing.h
+	<SDL.h>
 	"appstate.h"
 	"player.h"
 
@@ -77,10 +80,32 @@
 1679295289 c:\users\admin\desktop\cplusplus\mainprj\tank1990\menu.h
 	"appstate.h"
 
-1679825681 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\bullet.cpp
+1680140501 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\bullet.cpp
 	"bullet.h"
 	"renderer.h"
+	<iostream>
 
-1679825662 c:\users\admin\desktop\cplusplus\mainprj\tank1990\bullet.h
+1680140501 c:\users\admin\desktop\cplusplus\mainprj\tank1990\bullet.h
+	"object.h"
 	<SDL.h>
+
+1680138706 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\object.cpp
+	"object.h"
+	"renderer.h"
+	<algorithm>
+	<SDL.h>
+
+1680138355 c:\users\admin\desktop\cplusplus\mainprj\tank1990\object.h
+	"SDL.h"
+
+1680018873 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\tank.cpp
+	"tank.h"
+	"gameconfig.h"
+	"renderer.h"
+	<algorithm>
+
+1680018847 c:\users\admin\desktop\cplusplus\mainprj\tank1990\tank.h
+	"object.h"
+	"bullet.h"
+	<vector>
 
