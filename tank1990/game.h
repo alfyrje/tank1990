@@ -14,6 +14,8 @@ public:
     bool is_running;
     void eventProcess();
     AppState* appState;
+
+    SDL_Renderer* statusRenderer;
 };
 
 #endif

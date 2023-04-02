@@ -8,6 +8,7 @@
 #include <chrono>
 #include <SDL.h>
 #include <SDL_image.h>
+#include <SDL_ttf.h>
 
 Game::Game() {
     gameWindow = nullptr;
@@ -21,12 +22,14 @@ void Game::run() {
     is_running = true;
     if(SDL_Init(SDL_INIT_VIDEO) == 0) {
         IMG_Init(IMG_INIT_PNG);
+        TTF_Init();
         gameWindow = SDL_CreateWindow("Tank 1990", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
                                        GameConfig::window_rect.w, GameConfig::window_rect.h, SDL_WINDOW_SHOWN);
 
 
         Renderer& renderer = Renderer::getRenderer();
         renderer.loadTexture(gameWindow);
+        renderer.loadFont();
         appState = new Playing;
 
         double FPS;

@@ -24,15 +24,11 @@ Player::Player() {
     to_erase = false;
 }
 
-Player::~Player() {
-}
-
 void Player::update(int dt) {
     const Uint8 *keyState = SDL_GetKeyboardState(NULL);
 
     Tank::update(dt);
 
-    //std::cout << dest_rect.x << ' ' << dest_rect.y << ' ' << stop << std::endl;
     if (keyState[SDL_SCANCODE_LEFT]) { setDirection(3); speed = GameConfig::tank_default_speed; }
     else if (keyState[SDL_SCANCODE_RIGHT]) { setDirection(1); speed = GameConfig::tank_default_speed; }
     else if (keyState[SDL_SCANCODE_UP]) { setDirection(0); speed = GameConfig::tank_default_speed; }
@@ -40,7 +36,7 @@ void Player::update(int dt) {
     else {
         speed = 0.0;
     }
-    if (keyState[SDL_SCANCODE_C] && fireTime > GameConfig::reload_time) {
+    if (keyState[SDL_SCANCODE_SLASH] && fireTime > GameConfig::reload_time) {
         fire();
         fireTime = 0;
     }

@@ -15,6 +15,9 @@ public:
     static double bullet_default_speed;
     static int reload_time;
     static int max_bullet;
+    static std::string levels_path;
+    static int enemy_start_count;
+    static std::string font_name;
 };
 
 #endif

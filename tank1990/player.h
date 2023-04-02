@@ -6,8 +6,12 @@
 
 class Player : public Tank {
 public:
+    struct playerKeys {
+        SDL_Scancode up, right, down, left;
+    };
+
     Player();
-    ~Player();
+
     int stars;
     int fireTime;
     int maxBullet;

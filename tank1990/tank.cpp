@@ -16,8 +16,9 @@ Tank::~Tank() {
 }
 
 void Tank::draw() {
-    Renderer& renderer = Renderer::getRenderer();
-    renderer.drawObject(&src_rect, &dest_rect);
+    if(to_erase) return;
+    Object::draw();
+    for(auto bullet : bullets) if(bullet != nullptr) bullet->draw();
 }
 
 void Tank::update(int dt) {
@@ -41,10 +42,10 @@ void Tank::update(int dt) {
         dest_rect.x = pos_x;
         dest_rect.y = pos_y;
 
-        collision_rect.x = dest_rect.x + 2;
-        collision_rect.y = dest_rect.y + 2;
-        collision_rect.h = dest_rect.h - 4;
-        collision_rect.w = dest_rect.w - 4;
+        collision_rect.x = pos_x + 2.5;
+        collision_rect.y = pos_y + 2.5;
+        collision_rect.h = dest_rect.h - 5;
+        collision_rect.w = dest_rect.w - 5;
     }
 
     for(auto bullet : bullets) bullet->update(dt);

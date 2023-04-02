@@ -32,8 +32,12 @@
 			<Add option="-Wall" />
 		</Compiler>
 		<Unit filename="appstate.h" />
+		<Unit filename="brick.cpp" />
+		<Unit filename="brick.h" />
 		<Unit filename="bullet.cpp" />
 		<Unit filename="bullet.h" />
+		<Unit filename="eagle.cpp" />
+		<Unit filename="eagle.h" />
 		<Unit filename="game.cpp" />
 		<Unit filename="game.h" />
 		<Unit filename="gameconfig.cpp" />
