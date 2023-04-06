@@ -30,7 +30,7 @@ void Game::run() {
         Renderer& renderer = Renderer::getRenderer();
         renderer.loadTexture(gameWindow);
         renderer.loadFont();
-        appState = new Playing;
+        appState = new Playing(2);
 
         double FPS;
         int time1, time2, dt, fps_time = 0, fps_count = 0, delay = 15;
@@ -45,7 +45,6 @@ void Game::run() {
                 AppState* newState = appState->nextState();
                 delete appState;
                 appState = newState;
-
             }
 
             Game::eventProcess();

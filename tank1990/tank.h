@@ -9,8 +9,8 @@ class Tank : public Object {
 public:
     Tank();
     virtual ~Tank();
-    void draw();
-    void update(int dt);
+    virtual void draw();
+    virtual void update(int dt);
     virtual Bullet* fire();
     SDL_Rect nextCollisionRect(int dt);
     void setDirection(int d);
@@ -21,7 +21,15 @@ public:
     double speed;
     bool stop;
     int lives;
+    int fireTime;
+    int maxBullet;
+    double defaultSpeed;
     std::vector<Bullet*> bullets;
+    virtual void respawn();
+    virtual void destroy();
+    bool spawnFlag;
+    int spawnTime;
+    int spawnFrame;
 };
 
 

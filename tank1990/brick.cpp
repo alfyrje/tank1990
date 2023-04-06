@@ -1,5 +1,7 @@
 #include "brick.h"
 
+#include<iostream>
+
 Brick::Brick() {
     pos_x = 0.0;
     pos_y = 0.0;
@@ -20,6 +22,7 @@ Brick::Brick(double x, double y) {
     dest_rect.w = 20;
     dest_rect.h = 20;
     collision_rect = dest_rect;
+    TYPE = BRICK_WALL;
 }
 
 void Brick::update(int dt) {

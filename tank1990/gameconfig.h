@@ -3,6 +3,7 @@
 
 #include<SDL.h>
 #include<string>
+#include<vector>
 
 class GameConfig {
 public:
@@ -18,6 +19,11 @@ public:
     static std::string levels_path;
     static int enemy_start_count;
     static std::string font_name;
+    static double game_over_entry_speed;
+    static std::string game_over_text;
+    static int max_enemy_on_map;
+    static int enemy_ready_time;
+    static int level_end_time;
 };
 
 #endif

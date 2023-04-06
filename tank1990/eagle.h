@@ -11,6 +11,7 @@ public:
     void destroy();
     void update(int dt);
     bool type;
+    bool flag;
 };
 
 #endif

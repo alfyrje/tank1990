@@ -16,8 +16,6 @@ public:
     double speed;
     bool collide;
     void destroy();
-    int destroyTime;
-    int destroyFrame;
 
 };
 

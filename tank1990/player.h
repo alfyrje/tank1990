@@ -6,17 +6,25 @@
 
 class Player : public Tank {
 public:
-    struct playerKeys {
-        SDL_Scancode up, right, down, left;
+    struct player_key {
+        SDL_Scancode up;
+        SDL_Scancode right;
+        SDL_Scancode down;
+        SDL_Scancode left;
+        SDL_Scancode fire;
     };
-
+    player_key playerKeys;
     Player();
+    Player(bool isPlayer2);
 
     int stars;
-    int fireTime;
-    int maxBullet;
+    int score;
+    bool player2;
     void update(int dt);
     Bullet* fire();
+    void respawn();
+    void destroy();
+    void changeStarCountBy(int c);
 };
 
 #endif

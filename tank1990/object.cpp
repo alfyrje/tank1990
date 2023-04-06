@@ -40,6 +40,13 @@ void Object::update(int dt) {
 
     dest_rect.x = pos_x;
     dest_rect.y = pos_y;
+    dest_rect.w = dest_rect.w;
+    dest_rect.h = dest_rect.h;
+
+    collision_rect.x = dest_rect.x;
+    collision_rect.y = dest_rect.y;
+    collision_rect.w = dest_rect.w;
+    collision_rect.h = dest_rect.h;
 }
 
 SDL_Rect Object::moveRect(const SDL_Rect &rect, int x, int y) {

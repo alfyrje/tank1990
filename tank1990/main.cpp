@@ -5,6 +5,7 @@
 #include<SDL.h>
 
 int main(int argc, char* args[]) {
+    srand(time(NULL));
     game.run();
 
 
