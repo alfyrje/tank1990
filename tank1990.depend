@@ -1,0 +1,159 @@
+# depslib dependency file v1.0
+1680450659 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\game.cpp
+	"game.h"
+	"gameconfig.h"
+	"renderer.h"
+	"main.h"
+	"playing.h"
+	<bits/stdc++.h>
+	<chrono>
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_ttf.h>
+
+1680228709 c:\users\admin\desktop\cplusplus\mainprj\tank1990\game.h
+	"appstate.h"
+	<SDL.h>
+	"renderer.h"
+
+1680788913 c:\users\admin\desktop\cplusplus\mainprj\tank1990\gameconfig.h
+	<SDL.h>
+	<string>
+	<vector>
+
+1680745607 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\main.cpp
+	<bits/stdc++.h>
+	"main.h"
+	"renderer.h"
+	<SDL.h>
+
+1680788913 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\gameconfig.cpp
+	"gameconfig.h"
+
+1680343885 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\renderer.cpp
+	"renderer.h"
+	"gameconfig.h"
+	"main.h"
+	<bits/stdc++.h>
+	<SDL_image.h>
+	<SDL.h>
+
+1680273681 c:\users\admin\desktop\cplusplus\mainprj\tank1990\renderer.h
+	<SDL.h>
+	<SDL_ttf.h>
+	<string>
+
+1680787045 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\player.cpp
+	"player.h"
+	"renderer.h"
+	"main.h"
+	"gameconfig.h"
+	"bullet.h"
+	<algorithm>
+	<vector>
+	<iostream>
+
+1680595023 c:\users\admin\desktop\cplusplus\mainprj\tank1990\player.h
+	"tank.h"
+	<SDL.h>
+
+1680791440 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\playing.cpp
+	"playing.h"
+	"menu.h"
+	"renderer.h"
+	"main.h"
+	"object.h"
+	"gameconfig.h"
+	"brick.h"
+	"game.h"
+	<chrono>
+	<SDL.h>
+	<fstream>
+	<iostream>
+	<string>
+	<SDL_image.h>
+	<algorithm>
+
+1680788137 c:\users\admin\desktop\cplusplus\mainprj\tank1990\playing.h
+	<SDL.h>
+	"appstate.h"
+	"player.h"
+	"object.h"
+	"eagle.h"
+	"enemy.h"
+	"bonus.h"
+	<string>
+
+1679369303 c:\users\admin\desktop\cplusplus\mainprj\tank1990\main.h
+	"game.h"
+
+1679298024 c:\users\admin\desktop\cplusplus\mainprj\tank1990\appstate.h
+	<SDL.h>
+
+1679295427 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\menu.cpp
+	"menu.h"
+	"playing.h"
+
+1679295289 c:\users\admin\desktop\cplusplus\mainprj\tank1990\menu.h
+	"appstate.h"
+
+1680440979 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\bullet.cpp
+	"bullet.h"
+	"renderer.h"
+	<iostream>
+
+1680448381 c:\users\admin\desktop\cplusplus\mainprj\tank1990\bullet.h
+	"object.h"
+	<SDL.h>
+
+1680791592 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\object.cpp
+	"object.h"
+	"renderer.h"
+	<algorithm>
+	<SDL.h>
+
+1680788097 c:\users\admin\desktop\cplusplus\mainprj\tank1990\object.h
+	"SDL.h"
+
+1680786266 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\tank.cpp
+	"tank.h"
+	"gameconfig.h"
+	"renderer.h"
+	<iostream>
+	<algorithm>
+
+1680787045 c:\users\admin\desktop\cplusplus\mainprj\tank1990\tank.h
+	"object.h"
+	"bullet.h"
+	<vector>
+
+1680745812 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\brick.cpp
+	"brick.h"
+	<iostream>
+
+1680439167 c:\users\admin\desktop\cplusplus\mainprj\tank1990\brick.h
+	"object.h"
+
+1680758405 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\eagle.cpp
+	"eagle.h"
+	<iostream>
+
+1680589161 c:\users\admin\desktop\cplusplus\mainprj\tank1990\eagle.h
+	"object.h"
+
+1680786289 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\enemy.cpp
+	"enemy.h"
+	"gameconfig.h"
+	<iostream>
+
+1680610572 c:\users\admin\desktop\cplusplus\mainprj\tank1990\enemy.h
+	"tank.h"
+
+1680788922 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\bonus.cpp
+	"bonus.h"
+	"object.h"
+	"gameconfig.h"
+
+1680788913 c:\users\admin\desktop\cplusplus\mainprj\tank1990\bonus.h
+	"object.h"
+
