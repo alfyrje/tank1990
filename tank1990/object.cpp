@@ -16,12 +16,28 @@ Object::Object(double x, double y, OBJECT_TYPE type) {
     pos_y = y;
     to_erase = false;
     TYPE = type;
-    if(type == STONE_WALL) src_rect = {928, 144, 16, 16};
-    else if(type == BUSH) src_rect = {928, 192, 16, 16};
     dest_rect.x = pos_x;
     dest_rect.y = pos_y;
-    dest_rect.w = 20;
-    dest_rect.h = 20;
+    dest_rect.w = 40;
+    dest_rect.h = 40;
+    if(type == STONE_WALL) {
+        src_rect = {928, 144, 16, 16};
+        dest_rect.h = 20;
+        dest_rect.w = 20;
+    }
+    else if(type == BUSH) {
+        src_rect = {928, 192, 16, 16};
+        dest_rect.h = 20;
+        dest_rect.h = 20;
+    }
+    else if(type == SHIELD) src_rect = {976, 0, 32, 32};
+    else if(type == BONUS_GRENADE) src_rect = {896, 0, 32, 32};
+    else if(type == BONUS_HELMET) src_rect = {896, 32, 32, 32};
+    else if(type == BONUS_CLOCK) src_rect = {896, 64, 32, 32};
+    else if(type == BONUS_TANK) src_rect = {896, 128, 32, 32};
+    else if(type == BONUS_STAR) src_rect = {896, 160, 32, 32};
+    else if(type == BONUS_GUN) src_rect = {896, 192, 32, 32};
+
     collision_rect = dest_rect;
 }
 
@@ -40,8 +56,6 @@ void Object::update(int dt) {
 
     dest_rect.x = pos_x;
     dest_rect.y = pos_y;
-    dest_rect.w = dest_rect.w;
-    dest_rect.h = dest_rect.h;
 
     collision_rect.x = dest_rect.x;
     collision_rect.y = dest_rect.y;

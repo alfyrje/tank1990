@@ -50,7 +50,6 @@ void Eagle::update(int dt) {
 
 void Eagle::destroy() {
     if(type) return;
-
     type = true;
 
     src_rect = {1040, 0, 64, 64};

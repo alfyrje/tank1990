@@ -28,7 +28,8 @@ Enemy::Enemy() {
         defaultSpeed = GameConfig::tank_default_speed;
 
     targetPos = {-1, -1};
-
+    shieldFlag = 0;
+    shield = nullptr;
     respawn();
 }
 
@@ -76,6 +77,8 @@ Enemy::Enemy(double x, double y, OBJECT_TYPE type) {
         defaultSpeed = GameConfig::tank_default_speed;
 
     targetPos = {-1, -1};
+    shieldFlag = 0;
+    shield = nullptr;
 
     respawn();
 }
@@ -89,7 +92,7 @@ void Enemy::destroy() {
     lives--;
     if(lives <= 0) {
         lives = 0;
-        Tank::destroy();
+        if(!destroyFlag) Tank::destroy();
     }
 }
 
@@ -129,6 +132,7 @@ void Enemy::update(int dt) {
 
         }
 
+
         if(speedTime > tryTime) {
             speedTime = 0;
             tryTime = rand() % 300;
@@ -159,11 +163,11 @@ void Enemy::update(int dt) {
                 }
             }
             else if(TYPE == TANK_C) {
-                reloadTime = rand() % 800;
+                reloadTime = rand() % 800 + 250;
                 fire();
             }
             else {
-                reloadTime = rand() % 1000;
+                reloadTime = rand() % 1000 + 300;
                 fire();
             }
         }

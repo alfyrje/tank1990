@@ -21,12 +21,14 @@ Tank::~Tank() {
 void Tank::draw() {
     if(to_erase) return;
     Object::draw();
+    if(shieldFlag && shield != nullptr) shield->draw();
     for(auto bullet : bullets) if(bullet != nullptr) bullet->draw();
 }
 
 void Tank::update(int dt) {
     if(to_erase) return;
 
+    if(lives <= 0) destroy();
     if(!destroyFlag && !spawnFlag) {
         if(!stop) {
             switch(direction) {
@@ -89,6 +91,24 @@ void Tank::update(int dt) {
         }
     }
 
+    if(shieldFlag && shield != nullptr) {
+        shieldTime += dt;
+        shield->pos_x = pos_x;
+        shield->pos_y = pos_y;
+        shield->update(dt);
+        if(shieldTime > shieldFrame * 100) {
+            shieldFrame++;
+            shield->src_rect.y = (shieldFrame % 2) * 32;
+        }
+        if(shieldTime > GameConfig::tank_shield_time) {
+            shieldFlag = 0;
+            delete shield;
+            shield = nullptr;
+            shieldTime = 0;
+            shieldFrame = 0;
+        }
+    }
+
     for(auto bullet : bullets) bullet->update(dt);
     bullets.erase(std::remove_if(bullets.begin(), bullets.end(), [](Bullet*b){if(b->to_erase) {delete b; return true;} return false;}), bullets.end());
 }
@@ -103,18 +123,18 @@ Bullet* Tank::fire() {
         {
         case 0:
             bullet->pos_x += (dest_rect.w - bullet->dest_rect.w) / 2;
-            bullet->pos_y -= bullet->dest_rect.h - 4;
+            bullet->pos_y -= bullet->dest_rect.h - 5;
             break;
         case 1:
-            bullet->pos_x += dest_rect.w - 4;
+            bullet->pos_x += dest_rect.w - 5;
             bullet->pos_y += (dest_rect.h - bullet->dest_rect.h) / 2;
             break;
         case 2:
             bullet->pos_x += (dest_rect.w - bullet->dest_rect.w) / 2;
-            bullet->pos_y += dest_rect.h - 4;
+            bullet->pos_y += dest_rect.h - 5;
             break;
         case 3:
-            bullet->pos_x -= bullet->dest_rect.w - 4;
+            bullet->pos_x -= bullet->dest_rect.w - 5;
             bullet->pos_y += (dest_rect.h - bullet->dest_rect.h) / 2;
             break;
         }
@@ -196,7 +216,6 @@ void Tank::respawn() {
 
     stop = false;
 
-    update(0);
     spawnFlag = 1;
     spawnFrame = 0;
     spawnTime = 0;
@@ -205,10 +224,12 @@ void Tank::respawn() {
     collision_rect.y = 0;
     collision_rect.h = 0;
     collision_rect.w = 0;
+
+    update(0);
 }
 
 void Tank::destroy() {
-    if(destroyFlag) return;
+    if(destroyFlag || spawnFlag || shieldFlag) return;
     stop = true;
     destroyFlag = true;
     destroyFrame = 0;
@@ -229,4 +250,13 @@ void Tank::destroy() {
     collision_rect.y = 0;
     collision_rect.h = 0;
     collision_rect.w = 0;
+
+    update(0);
+}
+
+void Tank::grantShield() {
+    shieldFlag = 1;
+    shieldFrame = 0;
+    if(shield  == nullptr) shield = new Object(pos_x, pos_y, SHIELD);
+    shieldTime = 0;
 }

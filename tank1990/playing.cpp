@@ -140,7 +140,8 @@ void Playing::draw() {
     for(auto row : level) for(auto item : row) if(item != nullptr) item->draw();
     for(auto player : players) player->draw();
     for(auto enemy : enemies) enemy->draw();
-    for(auto bush: bushes) bush->draw();
+    for(auto bush : bushes) bush->draw();
+    //for(auto bonus : bonuses) bonus->draw();
     eagle->draw();
 
     if(gameOver) {
@@ -184,14 +185,6 @@ void Playing::update(int dt) {
     std::vector<Player*>::iterator pl1, pl2;
     std::vector<Enemy*>::iterator en1, en2;
 
-    for(pl1 = players.begin(); pl1 != players.end(); pl1++)
-        for(pl2 = pl1 + 1; pl2 != players.end(); pl2++)
-            checkCollisionTwoTanks(*pl1, *pl2, dt);
-
-    for(en1 = enemies.begin(); en1 != enemies.end(); en1++)
-        for(en2 = en1 + 1; en2 != enemies.end(); en2++)
-            checkCollisionTwoTanks(*en1, *en2, dt);
-
     for(auto enemy : enemies)
         for(auto bullet : enemy->bullets)
             checkCollisionBulletWithLevel(bullet);
@@ -213,9 +206,18 @@ void Playing::update(int dt) {
             }
         }
     }
+
     for(auto enemy : enemies)
         for(auto player : players)
                 checkCollisionEnemyBulletsWithPlayer(enemy, player);
+
+    for(pl1 = players.begin(); pl1 != players.end(); pl1++)
+        for(pl2 = pl1 + 1; pl2 != players.end(); pl2++)
+            checkCollisionTwoTanks(*pl1, *pl2, dt);
+
+    for(en1 = enemies.begin(); en1 != enemies.end(); en1++)
+        for(en2 = en1 + 1; en2 != enemies.end(); en2++)
+            checkCollisionTwoTanks(*en1, *en2, dt);
 
     for(auto player : players) checkCollisionTankWithLevel(player, dt);
     for(auto enemy : enemies) checkCollisionTankWithLevel(enemy, dt);
@@ -246,12 +248,15 @@ void Playing::update(int dt) {
 
     for(auto player : players) player->update(dt);
     for(auto enemy : enemies) enemy->update(dt);
-    for(auto bush : bushes) bush->update(dt);
+    for(auto bonus : bonuses) bonus->draw();
     eagle->update(dt);
     for(auto row : level) for(auto item : row) if(item != nullptr) item->update(dt);
-    enemies.erase(std::remove_if(enemies.begin(), enemies.end(), [](Enemy*e){if(e->to_erase) {delete e; return true;} return false;}), enemies.end());
+    for(auto bush : bushes) bush->update(dt);
+
+    enemies.erase(std::remove_if(enemies.begin(), enemies.end(), [](Enemy*e){if(e->to_erase || (e->destroyFrame >= 7)) {delete e; return true;} return false;}), enemies.end());
     players.erase(std::remove_if(players.begin(), players.end(), [&](Player*p){if(p->to_erase) {killedPlayers.push_back(p); return true;} return false;}), players.end());
     bushes.erase(std::remove_if(bushes.begin(), bushes.end(), [](Object*b){if(b->to_erase) {delete b; return true;} return false;}), bushes.end());
+    bonuses.erase(std::remove_if(bonuses.begin(), bonuses.end(), [](Bonus*b){if(b->to_erase) {delete b; return true;} return false;}), bonuses.end());
 
     enemyReadyTime += dt;
     if((int)enemies.size() < std::min(GameConfig::max_enemy_on_map, enemyToKill) && enemyReadyTime > GameConfig::enemy_ready_time) {
@@ -431,6 +436,17 @@ void Playing::checkCollisionBulletWithLevel(Bullet* bullet) {
 
     pr = &bullet->collision_rect;
 
+    if(eagle->type == 0 && !gameOver) {
+        intersect_rect = intersectRect(&eagle->collision_rect, pr);
+        if(intersect_rect.w > 0 && intersect_rect.h > 0)
+        {
+            bullet->destroy();
+            eagle->destroy();
+            gameOverTextPos = GameConfig::map_rect.h;
+            gameOver = true;
+        }
+    }
+
     switch(bullet->direction) {
     case 0:
         row_start = row_end = bullet->collision_rect.y / GameConfig::tile_rect.h;
@@ -489,16 +505,7 @@ void Playing::checkCollisionBulletWithLevel(Bullet* bullet) {
         bullet->destroy();
     }
 
-    if(eagle->type == 0 && !gameOver) {
-        intersect_rect = intersectRect(&eagle->collision_rect, pr);
-        if(intersect_rect.w > 0 && intersect_rect.h > 0)
-        {
-            bullet->destroy();
-            eagle->destroy();
-            gameOverTextPos = GameConfig::map_rect.h;
-            gameOver = true;
-        }
-    }
+
 }
 
 void Playing::checkCollisionTwoBullets(Bullet *bullet1, Bullet *bullet2) {
@@ -525,8 +532,11 @@ void Playing::checkCollisionPlayerBulletsWithEnemy(Player* player, Enemy* enemy)
                 if(enemy->bonusFlag) generateBonus();
                 bullet->destroy();
                 enemy->destroy();
-                enemyToKill--;
-                player->score += 100;
+                if(enemy->lives == 0) {
+                    enemyToKill--;
+                    player->score += 100;
+                }
+                else player->score += 50;
             }
         }
     }
@@ -559,9 +569,19 @@ void Playing::generateEnemy() {
     else e = new Enemy(480, 1, type);
     enemySpawnPos = (enemySpawnPos + 1) % 3;
 
-    e->lives = rand() % 4 + 1;
-
     double p = 1.0 * rand() / RAND_MAX;
-    if(p < 0.12) e->bonusFlag = true;
+
+    if(p < 0.12) {
+        e->bonusFlag = true;
+        e->lives = 1;
+    }
+    else {
+        e->bonusFlag = false;
+        p = 1.0 * rand() / RAND_MAX;
+        if(p < 0.1) e->lives = 4;
+        else if(p < 0.3) e->lives = 3;
+        else if(p < 0.6) e->lives = 2;
+        else e->lives = 1;
+    }
     enemies.push_back(e);
 }

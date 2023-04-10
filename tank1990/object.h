@@ -11,6 +11,13 @@ enum OBJECT_TYPE {
     TANK_B,
     TANK_C,
     TANK_D,
+    SHIELD,
+    BONUS_STAR,
+    BONUS_GRENADE,
+    BONUS_CLOCK,
+    BONUS_TANK,
+    BONUS_GUN,
+    BONUS_HELMET,
 };
 
 class Object {
@@ -32,6 +39,8 @@ public:
     int destroyFlag;
     int destroyTime;
     int destroyFrame;
+    int src_x;
+    int src_y;
 };
 
 

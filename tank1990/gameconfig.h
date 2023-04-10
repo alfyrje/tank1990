@@ -24,6 +24,8 @@ public:
     static int max_enemy_on_map;
     static int enemy_ready_time;
     static int level_end_time;
+    static int tank_shield_time;
+    static int bonus_show_time;
 };
 
 #endif

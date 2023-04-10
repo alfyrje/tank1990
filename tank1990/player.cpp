@@ -24,6 +24,8 @@ Player::Player() {
     src_x = 24 * 16;
     to_erase = false;
     destroyFlag = false;
+    shieldFlag = 0;
+    shield = nullptr;
 }
 
 Player::Player(bool isPlayer2) {
@@ -62,6 +64,8 @@ Player::Player(bool isPlayer2) {
     maxBullet = GameConfig::max_bullet;
     stop = 0;
     to_erase = false;
+    shieldFlag = 0;
+    shield = nullptr;
 }
 
 
@@ -86,6 +90,8 @@ void Player::update(int dt) {
 
     fireTime += dt;
 
+    src_y = stars * 2 * 32;
+
     stop = false;
 }
 
@@ -93,7 +99,7 @@ Bullet* Player::fire() {
     Bullet* b = Tank::fire();
     if(b != nullptr) {
         if(stars > 0) b->speed = GameConfig::bullet_default_speed * 1.3;
-        if(stars >= 3) b->increased_damage = true;
+        if(stars == 3) b->increased_damage = true;
     }
     return b;
 }
@@ -120,10 +126,18 @@ void Player::respawn() {
     dest_rect.w = 40;
 
     setDirection(0);
+
     Tank::respawn();
+    grantShield();
+    shieldTime = GameConfig::tank_shield_time / 2;
+    shieldFrame = 5000 / 100;
+
+    maxBullet = GameConfig::max_bullet;
 }
 
 void Player::destroy() {
+    if(shieldFlag || destroyFlag) return;
+
     if(stars == 3) changeStarCountBy(-1);
     else {
         changeStarCountBy(-3);

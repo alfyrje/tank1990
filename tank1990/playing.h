@@ -7,6 +7,7 @@
 #include "object.h"
 #include "eagle.h"
 #include "enemy.h"
+#include "bonus.h"
 #include<string>
 
 class Playing : public AppState {
@@ -27,6 +28,7 @@ public:
     std::vector<Player*> killedPlayers;
     std::vector<std::vector<Object*> > level;
     std::vector<Object*> bushes;
+    std::vector<Bonus*> bonuses;
     Eagle* eagle;
 
     bool finished() const;

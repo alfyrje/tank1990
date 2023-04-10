@@ -15,7 +15,6 @@ public:
     SDL_Rect nextCollisionRect(int dt);
     void setDirection(int d);
     void collide();
-    int src_x;
     int direction;
     void collide(SDL_Rect &intersect_rect);
     double speed;
@@ -30,6 +29,11 @@ public:
     bool spawnFlag;
     int spawnTime;
     int spawnFrame;
+    Object* shield;
+    void grantShield();
+    int shieldTime = 0;
+    bool shieldFlag;
+    int shieldFrame;
 };
 
 
