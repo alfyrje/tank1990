@@ -141,7 +141,7 @@ void Playing::draw() {
     for(auto player : players) player->draw();
     for(auto enemy : enemies) enemy->draw();
     for(auto bush : bushes) bush->draw();
-    //for(auto bonus : bonuses) bonus->draw();
+    for(auto bonus : bonuses) bonus->draw();
     eagle->draw();
 
     if(gameOver) {
@@ -180,7 +180,7 @@ void Playing::draw() {
 }
 
 void Playing::update(int dt) {
-    if(dt > 40) return;
+    //if(dt > 40) return;
 
     std::vector<Player*>::iterator pl1, pl2;
     std::vector<Enemy*>::iterator en1, en2;
@@ -193,6 +193,11 @@ void Playing::update(int dt) {
             checkCollisionBulletWithLevel(bullet);
             checkCollisionBulletWithBush(bullet);
         }
+
+    for(auto enemy : enemies)
+        for(auto player : players)
+                checkCollisionEnemyBulletsWithPlayer(enemy, player);
+
 
     for(auto player : players) {
         for(auto enemy : enemies) {
@@ -207,9 +212,6 @@ void Playing::update(int dt) {
         }
     }
 
-    for(auto enemy : enemies)
-        for(auto player : players)
-                checkCollisionEnemyBulletsWithPlayer(enemy, player);
 
     for(pl1 = players.begin(); pl1 != players.end(); pl1++)
         for(pl2 = pl1 + 1; pl2 != players.end(); pl2++)
@@ -218,6 +220,10 @@ void Playing::update(int dt) {
     for(en1 = enemies.begin(); en1 != enemies.end(); en1++)
         for(en2 = en1 + 1; en2 != enemies.end(); en2++)
             checkCollisionTwoTanks(*en1, *en2, dt);
+
+    for(auto player : players)
+        for(auto bonus : bonuses)
+            checkCollisionPlayerWithBonus(player, bonus);
 
     for(auto player : players) checkCollisionTankWithLevel(player, dt);
     for(auto enemy : enemies) checkCollisionTankWithLevel(enemy, dt);
@@ -248,7 +254,7 @@ void Playing::update(int dt) {
 
     for(auto player : players) player->update(dt);
     for(auto enemy : enemies) enemy->update(dt);
-    for(auto bonus : bonuses) bonus->draw();
+    for(auto bonus : bonuses) bonus->update(dt);
     eagle->update(dt);
     for(auto row : level) for(auto item : row) if(item != nullptr) item->update(dt);
     for(auto bush : bushes) bush->update(dt);
@@ -270,7 +276,7 @@ void Playing::update(int dt) {
             playingFinished = true;
     }
 
-    if(players.empty() && gameOver) {
+    if(players.empty() && !gameOver) {
         eagle->destroy();
         gameOverTextPos = GameConfig::map_rect.h;
         gameOver = true;
@@ -524,7 +530,6 @@ void Playing::checkCollisionPlayerBulletsWithEnemy(Player* player, Enemy* enemy)
     if(player->to_erase || enemy->to_erase) return;
     if(enemy->destroyFlag) return;
     SDL_Rect intersect_rect;
-
     for(auto bullet : player->bullets) {
         if(!bullet->to_erase && !bullet->collide) {
             intersect_rect = intersectRect(&bullet->collision_rect, &enemy->collision_rect);
@@ -537,6 +542,7 @@ void Playing::checkCollisionPlayerBulletsWithEnemy(Player* player, Enemy* enemy)
                     player->score += 100;
                 }
                 else player->score += 50;
+                return;
             }
         }
     }
@@ -553,12 +559,60 @@ void Playing::checkCollisionEnemyBulletsWithPlayer(Enemy* enemy, Player* player)
             if(intersect_rect.w > 0 && intersect_rect.h > 0) {
                 bullet->destroy();
                 player->destroy();
+                return;
             }
         }
     }
 }
 
+void Playing::checkCollisionPlayerWithBonus(Player* player, Bonus* bonus) {
+    if(player->to_erase || bonus->to_erase) return;
+    SDL_Rect intersect_rect = intersectRect(&player->collision_rect, &bonus->collision_rect);
+    if(intersect_rect.w > 0 && intersect_rect.h > 0) {
+        player->score += 300;
+
+        if(bonus->TYPE == BONUS_GRENADE) {
+            for(auto enemy : enemies)
+            {
+                if(!enemy->to_erase)
+                {
+                    player->score += 200;
+                    while(enemy->lives > 0) enemy->destroy();
+                    enemyToKill--;
+                }
+            }
+        }
+        else if(bonus->TYPE == BONUS_HELMET) {
+            player->grantShield();
+        }
+        else if(bonus->TYPE == BONUS_CLOCK) {
+            for(auto enemy : enemies) if(!enemy->to_erase) enemy->frozenFlag = true;
+        }
+        else if(bonus->TYPE == BONUS_TANK) {
+            player->lives++;
+        }
+        else if(bonus->TYPE == BONUS_STAR) {
+            player->changeStarCountBy(1);
+        }
+        else if(bonus->TYPE == BONUS_GUN) {
+            player->changeStarCountBy(3);
+        }
+
+        bonus->to_erase = true;
+    }
+}
+
 void Playing::generateBonus() {
+    Bonus* b = new Bonus(0, 0, (OBJECT_TYPE)(rand() % (BONUS_HELMET - BONUS_STAR + 1) + BONUS_STAR));
+    SDL_Rect intersect_rect;
+    do {
+        b->pos_x = rand() % (GameConfig::map_rect.w - GameConfig::tile_rect.w);
+        b->pos_y = rand() % (GameConfig::map_rect.h - GameConfig::tile_rect.h);
+        b->update(0);
+        intersect_rect = intersectRect(&b->collision_rect, &eagle->collision_rect);
+    } while(intersect_rect.w > 0 && intersect_rect.h > 0);
+
+    bonuses.push_back(b);
 }
 
 void Playing::generateEnemy() {

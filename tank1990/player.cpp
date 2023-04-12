@@ -8,8 +8,7 @@
 #include<vector>
 #include<iostream>
 
-Player::Player() {
-    lives = 11;
+Player::Player() : Tank() {
     stars = 0;
     spawnFlag = 0;
     direction = 0;
@@ -28,7 +27,7 @@ Player::Player() {
     shield = nullptr;
 }
 
-Player::Player(bool isPlayer2) {
+Player::Player(bool isPlayer2) : Tank() {
     lives = 11;
     stars = 0;
     spawnFlag = 0;
@@ -75,23 +74,23 @@ void Player::update(int dt) {
     Tank::update(dt);
 
     defaultSpeed = GameConfig::tank_default_speed;
+    if(!destroyFlag && !spawnFlag) {
+        if (keyState[playerKeys.left]) { setDirection(3); speed = defaultSpeed; }
+        else if (keyState[playerKeys.right]) { setDirection(1); speed = defaultSpeed; }
+        else if (keyState[playerKeys.up]) { setDirection(0); speed = defaultSpeed; }
+        else if (keyState[playerKeys.down]) { setDirection(2); speed = defaultSpeed; }
+        else {
+            speed = 0.0;
+        }
+        if (keyState[playerKeys.fire] && fireTime > GameConfig::reload_time) {
+            fire();
+            fireTime = 0;
+        }
 
-    if (keyState[playerKeys.left]) { setDirection(3); speed = defaultSpeed; }
-    else if (keyState[playerKeys.right]) { setDirection(1); speed = defaultSpeed; }
-    else if (keyState[playerKeys.up]) { setDirection(0); speed = defaultSpeed; }
-    else if (keyState[playerKeys.down]) { setDirection(2); speed = defaultSpeed; }
-    else {
-        speed = 0.0;
+        fireTime += dt;
+
+        src_rect.y = stars * 2 * 32;
     }
-    if (keyState[playerKeys.fire] && fireTime > GameConfig::reload_time) {
-        fire();
-        fireTime = 0;
-    }
-
-    fireTime += dt;
-
-    src_y = stars * 2 * 32;
-
     stop = false;
 }
 
@@ -124,6 +123,15 @@ void Player::respawn() {
     dest_rect.y = pos_y;
     dest_rect.h = 40;
     dest_rect.w = 40;
+
+    if(!player2) {
+        src_rect = {640, 0, 32, 32};
+        src_x = 640;
+    }
+    else {
+        src_rect = {768, 0, 32, 32};
+        src_x = 768;
+    }
 
     setDirection(0);
 

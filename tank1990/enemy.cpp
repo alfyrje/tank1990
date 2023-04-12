@@ -3,7 +3,7 @@
 
 #include<iostream>
 
-Enemy::Enemy() {
+Enemy::Enemy() : Tank() {
     destroyFlag = false;
     speed = 0;
     fireTime = 0;
@@ -33,7 +33,7 @@ Enemy::Enemy() {
     respawn();
 }
 
-Enemy::Enemy(double x, double y, OBJECT_TYPE type) {
+Enemy::Enemy(double x, double y, OBJECT_TYPE type) : Tank() {
     destroyFlag = false;
     bonusFlag = false;
     speed = 0;
@@ -113,7 +113,7 @@ void Enemy::update(int dt) {
         directionTime += dt;
         speedTime += dt;
         fireTime += dt;
-        if(directionTime > keepDirectionTime) {
+        if(!frozenFlag && directionTime > keepDirectionTime) {
             directionTime = 0;
             keepDirectionTime = rand() % 800 + 100;
 

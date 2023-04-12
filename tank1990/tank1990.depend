@@ -16,7 +16,7 @@
 	<SDL.h>
 	"renderer.h"
 
-1680788913 c:\users\admin\desktop\cplusplus\mainprj\tank1990\gameconfig.h
+1681298497 c:\users\admin\desktop\cplusplus\mainprj\tank1990\gameconfig.h
 	<SDL.h>
 	<string>
 	<vector>
@@ -27,7 +27,7 @@
 	"renderer.h"
 	<SDL.h>
 
-1681125705 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\gameconfig.cpp
+1681298497 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\gameconfig.cpp
 	"gameconfig.h"
 
 1680343885 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\renderer.cpp
@@ -43,7 +43,7 @@
 	<SDL_ttf.h>
 	<string>
 
-1681130880 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\player.cpp
+1681298944 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\player.cpp
 	"player.h"
 	"renderer.h"
 	"main.h"
@@ -57,7 +57,7 @@
 	"tank.h"
 	<SDL.h>
 
-1681130329 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\playing.cpp
+1681299085 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\playing.cpp
 	"playing.h"
 	"menu.h"
 	"renderer.h"
@@ -74,7 +74,7 @@
 	<SDL_image.h>
 	<algorithm>
 
-1680788137 c:\users\admin\desktop\cplusplus\mainprj\tank1990\playing.h
+1681298067 c:\users\admin\desktop\cplusplus\mainprj\tank1990\playing.h
 	<SDL.h>
 	"appstate.h"
 	"player.h"
@@ -97,7 +97,7 @@
 1679295289 c:\users\admin\desktop\cplusplus\mainprj\tank1990\menu.h
 	"appstate.h"
 
-1680440979 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\bullet.cpp
+1681188953 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\bullet.cpp
 	"bullet.h"
 	"renderer.h"
 	<iostream>
@@ -115,14 +115,14 @@
 1680788097 c:\users\admin\desktop\cplusplus\mainprj\tank1990\object.h
 	"SDL.h"
 
-1681130221 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\tank.cpp
+1681298722 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\tank.cpp
 	"tank.h"
 	"gameconfig.h"
 	"renderer.h"
 	<iostream>
 	<algorithm>
 
-1680787045 c:\users\admin\desktop\cplusplus\mainprj\tank1990\tank.h
+1681298497 c:\users\admin\desktop\cplusplus\mainprj\tank1990\tank.h
 	"object.h"
 	"bullet.h"
 	<vector>
@@ -141,7 +141,7 @@
 1680589161 c:\users\admin\desktop\cplusplus\mainprj\tank1990\eagle.h
 	"object.h"
 
-1681130616 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\enemy.cpp
+1681299186 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\enemy.cpp
 	"enemy.h"
 	"gameconfig.h"
 	<iostream>

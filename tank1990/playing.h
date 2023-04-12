@@ -48,6 +48,7 @@ public:
     void checkCollisionEnemyBulletsWithPlayer(Enemy* Enemy, Player* player);
     void checkCollisionTwoBullets(Bullet* bullet1, Bullet* bullet2);
     void checkCollisionBulletWithBush(Bullet *bullet);
+    void checkCollisionPlayerWithBonus(Player* player, Bonus* bonus);
 
     int enemySpawnPos;
     int enemyReadyTime;

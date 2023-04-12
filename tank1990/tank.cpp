@@ -9,8 +9,23 @@ Tank::Tank() {
     direction = 0;
     speed = 0.0;
     to_erase = false;
+    destroyTime = 0;
     destroyFlag = false;
-    spawnFlag = 0;
+    destroyFrame = 0;
+    stop = false;
+    lives = 1;
+    fireTime = 0;
+    maxBullet = 1;
+    defaultSpeed = 0;
+    spawnFlag = false;
+    spawnTime = 0;
+    spawnFrame = 0;
+    shield = nullptr;
+    shieldTime = 0;
+    shieldFlag = false;
+    shieldFrame = 0;
+    frozenTime = 0;
+    frozenFlag = false;
 }
 
 Tank::~Tank() {
@@ -28,9 +43,48 @@ void Tank::draw() {
 void Tank::update(int dt) {
     if(to_erase) return;
 
-    if(lives <= 0) destroy();
-    if(!destroyFlag && !spawnFlag) {
-        if(!stop) {
+    if(spawnFlag) {
+        spawnTime += dt;
+        if(spawnTime > 100) {
+            spawnTime = 0;
+            spawnFrame++;
+            src_rect = moveRect(src_rect, 0, 1);
+            if(spawnFrame >= 10) {
+                spawnFlag = false;
+                src_rect = pre_src_rect;
+                src_x = pre_src_rect.x;
+                spawnFrame = 0;
+            }
+        }
+    }
+    else if(destroyFlag) {
+        destroyTime += dt;
+        if(destroyTime > 70) {
+            destroyTime = 0;
+            destroyFrame++;
+            src_rect = moveRect(src_rect, 0, 1);
+            if(destroyFrame >= 7) {
+                destroyFrame = 7;
+                if(lives > 0) {
+                    destroyFlag = false;
+                    destroyFrame = 0;
+                    src_rect = pre_src_rect;
+                    src_x = pre_src_rect.x;
+
+
+                    dest_rect.x = pos_x + 20;
+                    dest_rect.y = pos_y + 20;
+                    dest_rect.w = 40;
+                    dest_rect.h = 40;
+                    respawn();
+                }
+                else if(bullets.empty()) to_erase = true;
+            }
+        }
+    }
+
+    else {
+        if(!stop && !frozenFlag) {
             switch(direction) {
             case 0:
                 pos_y -= speed * dt;
@@ -56,41 +110,6 @@ void Tank::update(int dt) {
         }
     }
 
-    else if(spawnFlag) {
-        spawnTime += dt;
-        if(spawnTime > 100) {
-            spawnTime = 0;
-            spawnFrame++;
-            src_rect = moveRect(src_rect, 0, 1);
-            if(spawnFrame >= 10) {
-                spawnFlag = false;
-                src_rect = pre_src_rect;
-                src_x = pre_src_rect.x;
-                spawnFrame = 0;
-            }
-        }
-    }
-    else if(destroyFlag) {
-        destroyTime += dt;
-        if(destroyTime > 70) {
-            destroyTime = 0;
-            destroyFrame++;
-            src_rect = moveRect(src_rect, 0, 1);
-            if(destroyFrame >= 7) {
-                destroyFlag = false;
-                destroyFrame = 0;
-                src_rect = pre_src_rect;
-                src_x = pre_src_rect.x;
-                dest_rect.x = pos_x + 20;
-                dest_rect.y = pos_y + 20;
-                dest_rect.w = 40;
-                dest_rect.h = 40;
-                if(lives > 0) respawn();
-                else if(bullets.empty()) to_erase = true;
-            }
-        }
-    }
-
     if(shieldFlag && shield != nullptr) {
         shieldTime += dt;
         shield->pos_x = pos_x;
@@ -109,12 +128,20 @@ void Tank::update(int dt) {
         }
     }
 
+    if(frozenFlag) {
+        frozenTime += dt;
+        if(frozenTime > GameConfig::tank_frozen_time) {
+            frozenFlag = false;
+            frozenTime = 0;
+        }
+    }
+
     for(auto bullet : bullets) bullet->update(dt);
     bullets.erase(std::remove_if(bullets.begin(), bullets.end(), [](Bullet*b){if(b->to_erase) {delete b; return true;} return false;}), bullets.end());
 }
 
 Bullet* Tank::fire() {
-    if(destroyFlag || spawnFlag) return nullptr;
+    if(destroyFlag || spawnFlag || frozenFlag) return nullptr;
 
     if((int)bullets.size() < maxBullet) {
         Bullet* bullet = new Bullet(pos_x, pos_y);
@@ -209,11 +236,12 @@ void Tank::collide(SDL_Rect &intersect_rect) {
 
 
 void Tank::respawn() {
+    if(spawnFlag || destroyFlag) return;
     pre_src_rect = src_rect;
     src_rect = {1008, 0, 32, 32};
     src_x = 1008;
     speed = 0.0;
-
+    setDirection(0);
     stop = false;
 
     spawnFlag = 1;
@@ -234,7 +262,6 @@ void Tank::destroy() {
     destroyFlag = true;
     destroyFrame = 0;
     destroyTime = 0;
-    setDirection(0);
     speed = 0;
 
     pre_src_rect = src_rect;

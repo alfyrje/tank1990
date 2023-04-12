@@ -108,4 +108,6 @@ void Bullet::destroy() {
     src_rect.y = 0;
     src_rect.h = 32;
     src_rect.w = 32;
+
+    update(0);
 }

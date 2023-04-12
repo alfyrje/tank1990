@@ -34,6 +34,8 @@ public:
     int shieldTime = 0;
     bool shieldFlag;
     int shieldFrame;
+    int frozenTime;
+    bool frozenFlag;
 };
 
 
