@@ -58,6 +58,8 @@
 		<Unit filename="playing.h" />
 		<Unit filename="renderer.cpp" />
 		<Unit filename="renderer.h" />
+		<Unit filename="scores.cpp" />
+		<Unit filename="scores.h" />
 		<Unit filename="tank.cpp" />
 		<Unit filename="tank.h" />
 		<Extensions>

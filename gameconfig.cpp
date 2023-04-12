@@ -20,3 +20,5 @@ int GameConfig::level_end_time = 5000;
 int GameConfig::tank_shield_time = 10000;
 int GameConfig::bonus_show_time = 10000;
 int GameConfig::tank_frozen_time = 8000;
+int GameConfig::level_start_time = 2000;
+int GameConfig::scores_show_time = 3000;

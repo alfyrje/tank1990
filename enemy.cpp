@@ -122,10 +122,11 @@ void Enemy::update(int dt) {
                 int dx = targetPos.x - (dest_rect.x + dest_rect.w / 2);
                 int dy = targetPos.y - (dest_rect.y + dest_rect.h / 2);
 
+                p = 1.0 * rand() / RAND_MAX;
                 if(abs(dx) > abs(dy))
-                    setDirection(p < 0.8 ? (dx < 0 ? 3 : 1) : (dy < 0 ? 0 : 2));
+                    setDirection(p < 0.6 ? (dx < 0 ? 3 : 1) : (dy < 0 ? 0 : 2));
                 else
-                    setDirection(p < 0.8 ? (dy < 0 ? 0 : 2) : (dx < 0 ? 3 : 1));
+                    setDirection(p < 0.6 ? (dy < 0 ? 0 : 2) : (dx < 0 ? 3 : 1));
             }
             else
                 setDirection((rand() % 4));

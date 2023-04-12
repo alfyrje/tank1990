@@ -75,4 +75,5 @@ void Game::eventProcess() {
     if(event.type == SDL_QUIT) {
         is_running = false;
     }
+    appState->eventProcess(&event);
 }

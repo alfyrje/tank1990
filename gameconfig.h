@@ -27,6 +27,8 @@ public:
     static int tank_shield_time;
     static int bonus_show_time;
     static int tank_frozen_time;
+    static int level_start_time;
+    static int scores_show_time;
 };
 
 #endif

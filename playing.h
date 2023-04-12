@@ -14,6 +14,7 @@ class Playing : public AppState {
 public:
     Playing();
     Playing(int players_count);
+    Playing(std::vector<Player *> players, int previous_level);
     ~Playing();
 
     int playersCount;
@@ -39,6 +40,9 @@ public:
     bool playingFinished;
     bool gameOver;
     int gameOverTextPos;
+    bool levelStartScreen;
+    int levelStartTime;
+    bool pause;
 
     SDL_Rect intersectRect(SDL_Rect *rect1, SDL_Rect *rect2);
     void checkCollisionTankWithLevel(Tank* tank, int dt);
