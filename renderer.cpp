@@ -12,6 +12,7 @@ Renderer::Renderer() {
 
 Renderer::~Renderer() {
     if(gameRenderer != nullptr) SDL_DestroyRenderer(gameRenderer);
+    if(gameTexture != nullptr) SDL_DestroyTexture(gameTexture);
 }
 
 void Renderer::loadTexture(SDL_Window* window) {

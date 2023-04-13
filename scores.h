@@ -19,6 +19,8 @@ public:
     bool gameOver;
     int showTime;
     int maxScore;
+    int scoreCounter;
+    bool scoreCounterChange;
 };
 
 #endif

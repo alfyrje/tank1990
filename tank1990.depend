@@ -30,7 +30,7 @@
 1681313447 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\gameconfig.cpp
 	"gameconfig.h"
 
-1680343885 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\renderer.cpp
+1681390496 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\renderer.cpp
 	"renderer.h"
 	"gameconfig.h"
 	"main.h"
@@ -43,7 +43,7 @@
 	<SDL_ttf.h>
 	<string>
 
-1681298944 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\player.cpp
+1681392394 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\player.cpp
 	"player.h"
 	"renderer.h"
 	"main.h"
@@ -57,7 +57,7 @@
 	"tank.h"
 	<SDL.h>
 
-1681313610 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\playing.cpp
+1681393353 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\playing.cpp
 	"playing.h"
 	"menu.h"
 	"renderer.h"
@@ -316,7 +316,7 @@
 	<iostream>
 	<algorithm>
 
-1681314013 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\scores.cpp
+1681393197 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\scores.cpp
 	"scores.h"
 	"menu.h"
 	"playing.h"
@@ -324,7 +324,7 @@
 	"renderer.h"
 	<iostream>
 
-1681313584 c:\users\admin\desktop\cplusplus\mainprj\tank1990\scores.h
+1681392394 c:\users\admin\desktop\cplusplus\mainprj\tank1990\scores.h
 	"appstate.h"
 	"player.h"
 

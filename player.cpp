@@ -74,7 +74,7 @@ void Player::update(int dt) {
     Tank::update(dt);
 
     defaultSpeed = GameConfig::tank_default_speed;
-    if(!destroyFlag && !spawnFlag) {
+    if(!destroyFlag && !spawnFlag && !menuFlag) {
         if (keyState[playerKeys.left]) { setDirection(3); speed = defaultSpeed; }
         else if (keyState[playerKeys.right]) { setDirection(1); speed = defaultSpeed; }
         else if (keyState[playerKeys.up]) { setDirection(0); speed = defaultSpeed; }

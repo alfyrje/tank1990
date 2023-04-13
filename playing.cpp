@@ -324,7 +324,11 @@ void Playing::update(int dt) {
         }
 
         if(gameOver) {
-            if(gameOverTextPos < GameConfig::map_rect.h / 2 - 10) playingFinished = true;
+            if(gameOverTextPos < GameConfig::map_rect.h / 2 - 10) {
+                levelEndTime += dt;
+                if(levelEndTime > GameConfig::level_end_time / 2)
+                    playingFinished = true;
+            }
             else gameOverTextPos -= GameConfig::game_over_entry_speed * dt;
         }
     }
