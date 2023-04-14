@@ -31,7 +31,7 @@
 1681469233 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\gameconfig.cpp
 	"gameconfig.h"
 
-1681482339 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\renderer.cpp
+1681485652 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\renderer.cpp
 	"renderer.h"
 	"gameconfig.h"
 	"main.h"
@@ -94,10 +94,11 @@
 	"renderer.h"
 	<SDL.h>
 
-1681482117 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\menu.cpp
+1681485652 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\menu.cpp
 	"menu.h"
 	"playing.h"
 	"gameconfig.h"
+	<SDL.h>
 	<iostream>
 
 1681485652 c:\users\admin\desktop\cplusplus\mainprj\tank1990\menu.h
