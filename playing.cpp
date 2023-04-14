@@ -26,12 +26,14 @@ Playing::Playing() {
     enemySpawnPos = 0;
     pause = false;
     levelEndTime = 0;
+    gameOver = false;
     nextLevel();
 }
 
 Playing::Playing(int players_count) {
     playersCount = players_count;
     playingFinished = false;
+    gameOver = false;
     levelColumns = 0;
     enemySpawnPos = 0;
     levelRows = 0;
@@ -42,15 +44,19 @@ Playing::Playing(int players_count) {
     nextLevel();
 }
 
-Playing::Playing(std::vector<Player *> players, int previous_level) {
+Playing::Playing(std::vector<Player *> t_players, int previous_level) {
     levelColumns = 0;
     levelRows = 0;
     currentLevel = previous_level;
     eagle = nullptr;
-    players = players;
+    gameOver = false;
+    playingFinished = false;
+    for(auto player : players) delete player;
+    players.clear();
+    for(auto player : t_players) players.push_back(player);
     playersCount = players.size();
+
     for(auto player : players) {
-        player->menuFlag = false;
         player->lives++;
         player->respawn();
     }
@@ -61,11 +67,14 @@ Playing::Playing(std::vector<Player *> players, int previous_level) {
 }
 
 Playing::~Playing() {
-    for(auto player : players) delete player;
+    //for(auto player : players) delete player;
     players.clear();
 
     for(auto enemy : enemies) delete enemy;
     enemies.clear();
+
+    for(auto bonus : bonuses) delete bonus;
+    bonuses.clear();
 
     for(auto row : level) {
         for(auto item : row) if(item != nullptr) delete item;
@@ -73,12 +82,17 @@ Playing::~Playing() {
     }
     level.clear();
 
+    for(auto bush : bushes)  delete bush;
+    bushes.clear();
+
     if(eagle != nullptr) delete eagle;
     eagle = nullptr;
 }
 
 void Playing::nextLevel() {
     currentLevel++;
+    if(currentLevel > 1) currentLevel = 1;
+    if(currentLevel < 1) currentLevel = 1;
 
     gameOver = false;
     playingFinished = false;
@@ -300,10 +314,10 @@ void Playing::update(int dt) {
         for(auto row : level) for(auto item : row) if(item != nullptr) item->update(dt);
         for(auto bush : bushes) bush->update(dt);
 
-        enemies.erase(std::remove_if(enemies.begin(), enemies.end(), [](Enemy*e){if(e->to_erase || (e->destroyFrame >= 7)) {delete e; return true;} return false;}), enemies.end());
+        enemies.erase(std::remove_if(enemies.begin(), enemies.end(), [](Enemy*e){if(e->to_erase) {delete e; e = nullptr; return true;} return false;}), enemies.end());
         players.erase(std::remove_if(players.begin(), players.end(), [&](Player*p){if(p->to_erase) {killedPlayers.push_back(p); return true;} return false;}), players.end());
-        bushes.erase(std::remove_if(bushes.begin(), bushes.end(), [](Object*b){if(b->to_erase) {delete b; return true;} return false;}), bushes.end());
-        bonuses.erase(std::remove_if(bonuses.begin(), bonuses.end(), [](Bonus*b){if(b->to_erase) {delete b; return true;} return false;}), bonuses.end());
+        bushes.erase(std::remove_if(bushes.begin(), bushes.end(), [](Object*b){if(b->to_erase) {delete b; b = nullptr; return true;} return false;}), bushes.end());
+        bonuses.erase(std::remove_if(bonuses.begin(), bonuses.end(), [](Bonus*b){if(b->to_erase) {delete b; b = nullptr; return true;} return false;}), bonuses.end());
 
         enemyReadyTime += dt;
         if((int)enemies.size() < std::min(GameConfig::max_enemy_on_map, enemyToKill) && enemyReadyTime > GameConfig::enemy_ready_time) {
@@ -353,8 +367,8 @@ bool Playing::finished() const {
 
 AppState* Playing::nextState() {
     if(gameOver || enemyToKill <= 0) {
-        for(auto player : players) killedPlayers.push_back(player);
-        Scores* scores = new Scores(killedPlayers, currentLevel, gameOver);
+        for(auto player : killedPlayers) players.push_back(player);
+        Scores* scores = new Scores(players, currentLevel, gameOver);
         return scores;
     }
     Menu* m = new Menu;

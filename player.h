@@ -25,7 +25,6 @@ public:
     void respawn();
     void destroy();
     void changeStarCountBy(int c);
-    bool menuFlag;
 };
 
 #endif

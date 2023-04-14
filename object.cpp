@@ -42,7 +42,6 @@ Object::Object(double x, double y, OBJECT_TYPE type) {
 }
 
 Object::~Object() {
-
 }
 
 void Object::draw() {

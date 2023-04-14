@@ -14,7 +14,7 @@ class Playing : public AppState {
 public:
     Playing();
     Playing(int players_count);
-    Playing(std::vector<Player *> players, int previous_level);
+    Playing(std::vector<Player *> t_players, int previous_level);
     ~Playing();
 
     int playersCount;

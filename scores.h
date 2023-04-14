@@ -8,6 +8,7 @@ class Scores : public AppState {
 public:
     Scores();
     Scores(std::vector<Player*> t_players, int level, bool game_over);
+    ~Scores();
     bool finished() const;
     void draw();
     void update(int dt);

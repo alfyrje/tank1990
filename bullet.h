@@ -8,7 +8,6 @@ class Bullet : public Object {
 public:
     Bullet();
     Bullet(double x, double y);
-    ~Bullet();
     void update(int dt);
     bool increased_damage;
     void draw();

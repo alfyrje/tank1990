@@ -33,10 +33,6 @@ Bullet::Bullet(double x, double y) {
     destroyFrame = 0;
 }
 
-Bullet::~Bullet() {
-
-}
-
 void Bullet::update(int dt) {
     if(!collide) {
         switch (direction)

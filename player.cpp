@@ -71,10 +71,10 @@ Player::Player(bool isPlayer2) : Tank() {
 void Player::update(int dt) {
     const Uint8 *keyState = SDL_GetKeyboardState(NULL);
 
-    Tank::update(dt);
-
     defaultSpeed = GameConfig::tank_default_speed;
-    if(!destroyFlag && !spawnFlag && !menuFlag) {
+
+    Tank::update(dt);
+    if(!destroyFlag && !spawnFlag) {
         if (keyState[playerKeys.left]) { setDirection(3); speed = defaultSpeed; }
         else if (keyState[playerKeys.right]) { setDirection(1); speed = defaultSpeed; }
         else if (keyState[playerKeys.up]) { setDirection(0); speed = defaultSpeed; }

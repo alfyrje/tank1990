@@ -253,7 +253,7 @@ void Tank::respawn() {
     collision_rect.h = 0;
     collision_rect.w = 0;
 
-    update(0);
+    //update(0);
 }
 
 void Tank::destroy() {
@@ -278,7 +278,7 @@ void Tank::destroy() {
     collision_rect.h = 0;
     collision_rect.w = 0;
 
-    update(0);
+    //update(0);
 }
 
 void Tank::grantShield() {
