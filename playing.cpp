@@ -91,8 +91,8 @@ Playing::~Playing() {
 
 void Playing::nextLevel() {
     currentLevel++;
-    if(currentLevel > 1) currentLevel = 1;
-    if(currentLevel < 1) currentLevel = 1;
+    if(currentLevel > 10) currentLevel = 1;
+    if(currentLevel < 1) currentLevel = 10;
 
     gameOver = false;
     playingFinished = false;
@@ -342,6 +342,15 @@ void Playing::update(int dt) {
 void Playing::eventProcess(SDL_Event* event) {
     if(event->type == SDL_KEYDOWN) {
         switch(event->key.keysym.sym) {
+        case SDLK_n:
+            enemyToKill = 0;
+            playingFinished = true;
+            break;
+        case SDLK_b:
+            enemyToKill = 0;
+            currentLevel -= 2;
+            playingFinished = true;
+            break;
         case SDLK_p:
             pause = !pause;
             break;
@@ -488,7 +497,7 @@ void Playing::checkCollisionBulletWithBush(Bullet *bullet) {
         intersect_rect = intersectRect(pr, an);
 
         if(intersect_rect.w > 0 && intersect_rect.h > 0) {
-            bullet->destroy();
+            //bullet->destroy();
             bush->to_erase = true;
         }
     }

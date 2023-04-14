@@ -31,7 +31,6 @@ void Renderer::drawObject(SDL_Rect *texture_src, SDL_Rect *window_dest) {
 }
 
 void Renderer::flush() {
-
     SDL_RenderPresent(gameRenderer);
     SDL_RenderClear(gameRenderer);
 }
@@ -40,13 +39,13 @@ void Renderer::drawText(const SDL_Point* start, std::string text, SDL_Color text
     if(font1 == nullptr || font2 == nullptr || font3 == nullptr) return;
     if(textTexture != nullptr) SDL_DestroyTexture(textTexture);
 
-    SDL_Surface* text_surface = nullptr;
+    text_surface = nullptr;
     if(font_size == 2) text_surface = TTF_RenderText_Solid(font2, text.c_str(), text_color);
     else if(font_size == 3) text_surface = TTF_RenderText_Solid(font3, text.c_str(), text_color);
     else text_surface = TTF_RenderText_Solid(font1, text.c_str(), text_color);
 
     textTexture = SDL_CreateTextureFromSurface(gameRenderer, text_surface);
-    SDL_FreeSurface(text_surface);
+
     SDL_Rect window_dest;
     if(start == nullptr) {
         window_dest.x = (GameConfig::map_rect.w + GameConfig::status_rect.w - text_surface->w)/2;
@@ -58,7 +57,7 @@ void Renderer::drawText(const SDL_Point* start, std::string text, SDL_Color text
     }
     window_dest.w = text_surface->w;
     window_dest.h = text_surface->h;
-
+    SDL_FreeSurface(text_surface);
     SDL_RenderCopy(gameRenderer, textTexture, NULL, &window_dest);
 }
 

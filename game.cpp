@@ -3,6 +3,7 @@
 #include "renderer.h"
 #include "main.h"
 #include "playing.h"
+#include "menu.h"
 
 #include <bits/stdc++.h>
 #include <chrono>
@@ -31,7 +32,7 @@ void Game::run() {
         Renderer* renderer = new Renderer;
         renderer->loadTexture(gameWindow);
         renderer->loadFont();
-        appState = new Playing(2);
+        appState = new Menu;
 
         double FPS;
         int time1, time2, dt, fps_time = 0, fps_count = 0, delay = 15;
@@ -47,6 +48,7 @@ void Game::run() {
                 delete appState;
                 appState = newState;
             }
+            if(appState == nullptr) break;
 
             Game::eventProcess();
 

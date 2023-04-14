@@ -12,7 +12,7 @@ public:
     SDL_Renderer* gameRenderer;
     SDL_Texture* gameTexture;
     SDL_Texture* textTexture;
-
+    SDL_Surface* text_surface;
     void loadTexture(SDL_Window* window);
     void drawObject(SDL_Rect* texture_src, SDL_Rect *window_dest);
     void drawText(const SDL_Point* start, std::string text, SDL_Color text_color, int font_size);

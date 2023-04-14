@@ -27,7 +27,7 @@ Object::Object(double x, double y, OBJECT_TYPE type) {
     }
     else if(type == BUSH) {
         src_rect = {928, 192, 16, 16};
-        dest_rect.h = 20;
+        dest_rect.w = 20;
         dest_rect.h = 20;
     }
     else if(type == SHIELD) src_rect = {976, 0, 32, 32};

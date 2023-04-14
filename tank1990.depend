@@ -1,10 +1,11 @@
 # depslib dependency file v1.0
-1681446793 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\game.cpp
+1681476965 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\game.cpp
 	"game.h"
 	"gameconfig.h"
 	"renderer.h"
 	"main.h"
 	"playing.h"
+	"menu.h"
 	<bits/stdc++.h>
 	<chrono>
 	<SDL.h>
@@ -30,7 +31,7 @@
 1681469233 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\gameconfig.cpp
 	"gameconfig.h"
 
-1681469918 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\renderer.cpp
+1681482339 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\renderer.cpp
 	"renderer.h"
 	"gameconfig.h"
 	"main.h"
@@ -38,12 +39,12 @@
 	<SDL_image.h>
 	<SDL.h>
 
-1681446030 c:\users\admin\desktop\cplusplus\mainprj\tank1990\renderer.h
+1681482315 c:\users\admin\desktop\cplusplus\mainprj\tank1990\renderer.h
 	<SDL.h>
 	<SDL_ttf.h>
 	<string>
 
-1681446454 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\player.cpp
+1681483220 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\player.cpp
 	"player.h"
 	"renderer.h"
 	"main.h"
@@ -57,7 +58,7 @@
 	"tank.h"
 	<SDL.h>
 
-1681469204 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\playing.cpp
+1681484799 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\playing.cpp
 	"playing.h"
 	"menu.h"
 	"renderer.h"
@@ -93,11 +94,15 @@
 	"renderer.h"
 	<SDL.h>
 
-1681444603 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\menu.cpp
+1681482117 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\menu.cpp
 	"menu.h"
 	"playing.h"
+	"gameconfig.h"
+	<iostream>
 
-1681444588 c:\users\admin\desktop\cplusplus\mainprj\tank1990\menu.h
+1681476996 c:\users\admin\desktop\cplusplus\mainprj\tank1990\menu.h
+	<vector>
+	"player.h"
 	"appstate.h"
 
 1681444624 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\bullet.cpp
@@ -109,7 +114,7 @@
 	"object.h"
 	<SDL.h>
 
-1681444634 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\object.cpp
+1681484595 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\object.cpp
 	"object.h"
 	"renderer.h"
 	<algorithm>
@@ -319,7 +324,7 @@
 	<iostream>
 	<algorithm>
 
-1681444588 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\scores.cpp
+1681485065 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\scores.cpp
 	"scores.h"
 	"menu.h"
 	"playing.h"

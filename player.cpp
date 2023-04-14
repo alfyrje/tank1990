@@ -30,7 +30,7 @@ Player::Player() : Tank() {
 
 Player::Player(bool isPlayer2) : Tank() {
     lives = 11;
-    stars = 0;
+    stars = 3;
     spawnFlag = 0;
     direction = 0;
     score = 0;
