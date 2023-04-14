@@ -21,6 +21,7 @@ Player::Player() : Tank() {
     maxBullet = GameConfig::max_bullet;
     stop = 0;
     src_x = 24 * 16;
+    score = 0;
     to_erase = false;
     destroyFlag = false;
     shieldFlag = 0;
@@ -32,6 +33,7 @@ Player::Player(bool isPlayer2) : Tank() {
     stars = 0;
     spawnFlag = 0;
     direction = 0;
+    score = 0;
     if(!isPlayer2) {
         src_rect = {640, 0, 32, 32};
         dest_rect = {160, 480, 40, 40};

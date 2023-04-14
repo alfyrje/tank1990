@@ -8,7 +8,7 @@ public:
     Menu();
     ~Menu();
     bool finished() const;
-    void draw();
+    void draw(Renderer* renderer);
     void update(int dt);
     void eventProcess(SDL_Event* ev);
     AppState* nextState();

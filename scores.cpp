@@ -38,35 +38,31 @@ Scores::~Scores() {
     players.clear();
 }
 
-void Scores::draw() {
-    Renderer& renderer = renderer.getRenderer();
-
-    SDL_Point p_dst;
-    SDL_Rect dst;
+void Scores::draw(Renderer* renderer) {
 
     p_dst = {200, 190};
-    renderer.drawText(&p_dst, "STAGE " + std::to_string(currentLevel), {255, 255, 220, 255}, 1);
+    renderer->drawText(&p_dst, "STAGE " + std::to_string(currentLevel), {255, 255, 220, 255}, 1);
     p_dst = {175, 230};
-    renderer.drawText(&p_dst, "PLAYER", {255, 255, 255, 255}, 2);
+    renderer->drawText(&p_dst, "PLAYER", {255, 255, 255, 255}, 2);
     p_dst = {345, 230};
-    renderer.drawText(&p_dst, "SCORE", {255, 255, 255, 255}, 2);
+    renderer->drawText(&p_dst, "SCORE", {255, 255, 255, 255}, 2);
     dst = {145, 255, 300, 2};
-    SDL_SetRenderDrawColor(renderer.gameRenderer, 250, 250, 200, 255);
-    SDL_RenderFillRect(renderer.gameRenderer, &dst);
-    SDL_SetRenderDrawColor(renderer.gameRenderer, 0, 0, 0, 0);
-    int i = 0;
+    SDL_SetRenderDrawColor(renderer->gameRenderer, 250, 250, 200, 255);
+    SDL_RenderFillRect(renderer->gameRenderer, &dst);
+    SDL_SetRenderDrawColor(renderer->gameRenderer, 0, 0, 0, 0);
+    i = 0;
     for(auto player : players) {
         dst = {175, 270 + i * (player->src_rect.h), player->src_rect.w, player->src_rect.h};
-        renderer.drawObject(&player->src_rect, &dst);
+        renderer->drawObject(&player->src_rect, &dst);
         p_dst = {215, 278 + i * (player->src_rect.h)};
-        renderer.drawText(&p_dst, "x" + std::to_string(player->lives), {255, 255, 255, 255}, 2);
+        renderer->drawText(&p_dst, "x" + std::to_string(player->lives), {255, 255, 255, 255}, 2);
         p_dst = {345, 278 + i * (player->src_rect.h)};
-        renderer.drawText(&p_dst, (scoreCounter < player->score ? std::to_string(scoreCounter) : std::to_string(player->score)), {255, 255, 255, 255}, 2);
+        renderer->drawText(&p_dst, (scoreCounter < player->score ? std::to_string(scoreCounter) : std::to_string(player->score)), {255, 255, 255, 255}, 2);
         i++;
     }
 
 
-    renderer.flush();
+    renderer->flush();
 }
 
 void Scores::update(int dt) {

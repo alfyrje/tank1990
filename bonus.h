@@ -7,7 +7,7 @@ class Bonus : public Object {
 public:
     Bonus();
     Bonus(double x, double y, OBJECT_TYPE type);
-    void draw();
+    void draw(Renderer* renderer);
     void update(int dt);
     int bonusShowTime;
     bool show;

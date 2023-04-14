@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1681310793 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\game.cpp
+1681446793 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\game.cpp
 	"game.h"
 	"gameconfig.h"
 	"renderer.h"
@@ -11,7 +11,7 @@
 	<SDL_image.h>
 	<SDL_ttf.h>
 
-1680228709 c:\users\admin\desktop\cplusplus\mainprj\tank1990\game.h
+1681443092 c:\users\admin\desktop\cplusplus\mainprj\tank1990\game.h
 	"appstate.h"
 	<SDL.h>
 	"renderer.h"
@@ -27,10 +27,10 @@
 	"renderer.h"
 	<SDL.h>
 
-1681439939 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\gameconfig.cpp
+1681468926 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\gameconfig.cpp
 	"gameconfig.h"
 
-1681390496 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\renderer.cpp
+1681469204 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\renderer.cpp
 	"renderer.h"
 	"gameconfig.h"
 	"main.h"
@@ -38,12 +38,12 @@
 	<SDL_image.h>
 	<SDL.h>
 
-1680273681 c:\users\admin\desktop\cplusplus\mainprj\tank1990\renderer.h
+1681446030 c:\users\admin\desktop\cplusplus\mainprj\tank1990\renderer.h
 	<SDL.h>
 	<SDL_ttf.h>
 	<string>
 
-1681438895 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\player.cpp
+1681446454 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\player.cpp
 	"player.h"
 	"renderer.h"
 	"main.h"
@@ -57,7 +57,7 @@
 	"tank.h"
 	<SDL.h>
 
-1681440486 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\playing.cpp
+1681469204 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\playing.cpp
 	"playing.h"
 	"menu.h"
 	"renderer.h"
@@ -75,7 +75,7 @@
 	<SDL_image.h>
 	<algorithm>
 
-1681439430 c:\users\admin\desktop\cplusplus\mainprj\tank1990\playing.h
+1681446806 c:\users\admin\desktop\cplusplus\mainprj\tank1990\playing.h
 	<SDL.h>
 	"appstate.h"
 	"player.h"
@@ -83,47 +83,50 @@
 	"eagle.h"
 	"enemy.h"
 	"bonus.h"
+	"renderer.h"
 	<string>
 
 1679369303 c:\users\admin\desktop\cplusplus\mainprj\tank1990\main.h
 	"game.h"
 
-1679298024 c:\users\admin\desktop\cplusplus\mainprj\tank1990\appstate.h
+1681444588 c:\users\admin\desktop\cplusplus\mainprj\tank1990\appstate.h
+	"renderer.h"
 	<SDL.h>
 
-1679295427 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\menu.cpp
+1681444603 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\menu.cpp
 	"menu.h"
 	"playing.h"
 
-1679295289 c:\users\admin\desktop\cplusplus\mainprj\tank1990\menu.h
+1681444588 c:\users\admin\desktop\cplusplus\mainprj\tank1990\menu.h
 	"appstate.h"
 
-1681440255 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\bullet.cpp
+1681444624 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\bullet.cpp
 	"bullet.h"
 	"renderer.h"
 	<iostream>
 
-1681440255 c:\users\admin\desktop\cplusplus\mainprj\tank1990\bullet.h
+1681444588 c:\users\admin\desktop\cplusplus\mainprj\tank1990\bullet.h
 	"object.h"
 	<SDL.h>
 
-1681440418 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\object.cpp
+1681444634 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\object.cpp
 	"object.h"
 	"renderer.h"
 	<algorithm>
 	<SDL.h>
 
-1681440418 c:\users\admin\desktop\cplusplus\mainprj\tank1990\object.h
+1681444588 c:\users\admin\desktop\cplusplus\mainprj\tank1990\object.h
+	"renderer.h"
 	"SDL.h"
 
-1681436894 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\tank.cpp
+1681444588 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\tank.cpp
 	"tank.h"
 	"gameconfig.h"
 	"renderer.h"
 	<iostream>
 	<algorithm>
 
-1681298497 c:\users\admin\desktop\cplusplus\mainprj\tank1990\tank.h
+1681444588 c:\users\admin\desktop\cplusplus\mainprj\tank1990\tank.h
 	"object.h"
 	"bullet.h"
 	<vector>
@@ -142,20 +145,20 @@
 1680589161 c:\users\admin\desktop\cplusplus\mainprj\tank1990\eagle.h
 	"object.h"
 
-1681311771 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\enemy.cpp
+1681444588 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\enemy.cpp
 	"enemy.h"
 	"gameconfig.h"
 	<iostream>
 
-1680610572 c:\users\admin\desktop\cplusplus\mainprj\tank1990\enemy.h
+1681444588 c:\users\admin\desktop\cplusplus\mainprj\tank1990\enemy.h
 	"tank.h"
 
-1680788922 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\bonus.cpp
+1681444599 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\bonus.cpp
 	"bonus.h"
 	"object.h"
 	"gameconfig.h"
 
-1680788913 c:\users\admin\desktop\cplusplus\mainprj\tank1990\bonus.h
+1681444588 c:\users\admin\desktop\cplusplus\mainprj\tank1990\bonus.h
 	"object.h"
 
 1680788922 source:c:\users\admin\documents\github\tank1990\bonus.cpp
@@ -316,7 +319,7 @@
 	<iostream>
 	<algorithm>
 
-1681439871 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\scores.cpp
+1681444588 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\scores.cpp
 	"scores.h"
 	"menu.h"
 	"playing.h"
@@ -324,7 +327,7 @@
 	"renderer.h"
 	<iostream>
 
-1681439811 c:\users\admin\desktop\cplusplus\mainprj\tank1990\scores.h
+1681444589 c:\users\admin\desktop\cplusplus\mainprj\tank1990\scores.h
 	"appstate.h"
 	"player.h"
 

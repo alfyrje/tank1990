@@ -8,7 +8,7 @@ public:
     Enemy();
     Enemy(double x, double y, OBJECT_TYPE type);
     Enemy(double x, double y, int type);
-    void draw();
+    void draw(Renderer* renderer);
     void update(int dt);
     bool bonusFlag;
     void destroy();

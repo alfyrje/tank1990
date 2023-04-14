@@ -67,9 +67,8 @@ void Bullet::update(int dt) {
     }
 }
 
-void Bullet::draw() {
-    Renderer& renderer = Renderer::getRenderer();
-    renderer.drawObject(&src_rect, &dest_rect);
+void Bullet::draw(Renderer* renderer) {
+    renderer->drawObject(&src_rect, &dest_rect);
 }
 
 void Bullet::destroy() {

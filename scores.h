@@ -10,7 +10,7 @@ public:
     Scores(std::vector<Player*> t_players, int level, bool game_over);
     ~Scores();
     bool finished() const;
-    void draw();
+    void draw(Renderer* renderer);
     void update(int dt);
     void eventProcess(SDL_Event* event);
     AppState* nextState();

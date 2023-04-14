@@ -16,6 +16,7 @@ Game::Game() {
 
 Game::~Game() {
     if(appState != nullptr) delete appState;
+    if(renderer != nullptr) delete renderer;
 }
 
 void Game::run() {
@@ -27,9 +28,9 @@ void Game::run() {
                                        GameConfig::window_rect.w, GameConfig::window_rect.h, SDL_WINDOW_SHOWN);
 
 
-        Renderer& renderer = Renderer::getRenderer();
-        renderer.loadTexture(gameWindow);
-        renderer.loadFont();
+        Renderer* renderer = new Renderer;
+        renderer->loadTexture(gameWindow);
+        renderer->loadFont();
         appState = new Playing(2);
 
         double FPS;
@@ -50,7 +51,7 @@ void Game::run() {
             Game::eventProcess();
 
             appState->update(dt);
-            appState->draw();
+            appState->draw(renderer);
 
             SDL_Delay(delay);
             fps_time += dt; fps_count++;

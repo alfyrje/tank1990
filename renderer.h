@@ -18,8 +18,6 @@ public:
     void drawText(const SDL_Point* start, std::string text, SDL_Color text_color, int font_size);
     void flush();
     void loadFont();
-    static Renderer& getRenderer();
-
     TTF_Font* font1;
     TTF_Font* font2;
     TTF_Font* font3;

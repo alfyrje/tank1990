@@ -8,6 +8,7 @@
 #include "eagle.h"
 #include "enemy.h"
 #include "bonus.h"
+#include "renderer.h"
 #include<string>
 
 class Playing : public AppState {
@@ -17,6 +18,7 @@ public:
     Playing(std::vector<Player *> t_players, int previous_level);
     ~Playing();
 
+    std::string level_name;
     int playersCount;
     int levelRows;
     int levelColumns;
@@ -33,7 +35,7 @@ public:
     Eagle* eagle;
 
     bool finished() const;
-    void draw();
+    void draw(Renderer* renderer);
     void update(int dt);
     void eventProcess(SDL_Event* ev);
     AppState* nextState();
@@ -59,6 +61,10 @@ public:
     int levelEndTime;
     void generateBonus();
     void generateEnemy();
+    int dist;
+    int min_dist;
+    SDL_Point target;
+    SDL_Point pos;
 };
 
 #endif

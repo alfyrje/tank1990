@@ -9,7 +9,7 @@ Menu::~Menu() {
 
 }
 
-void Menu::draw() {
+void Menu::draw(Renderer* renderer) {
 
 }
 

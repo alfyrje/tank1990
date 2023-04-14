@@ -168,60 +168,55 @@ SDL_Rect Playing::intersectRect(SDL_Rect *rect1, SDL_Rect *rect2) {
     return intersect_rect;
 }
 
-void Playing::draw() {
-    Renderer& renderer = Renderer::getRenderer();
-
+void Playing::draw(Renderer* renderer) {
     if(levelStartScreen) {
-        std::string level_name = "STAGE " + std::to_string(currentLevel);
-        renderer.drawText(nullptr, level_name, {255, 255, 255, 255}, 1);
+        level_name = "STAGE " + std::to_string(currentLevel);
+        renderer->drawText(nullptr, level_name, {255, 255, 255, 255}, 1);
     }
 
     else {
-        SDL_SetRenderDrawColor(renderer.gameRenderer, 211, 211, 211, 0);
-        SDL_RenderFillRect(renderer.gameRenderer, &GameConfig::status_rect);
-        SDL_SetRenderDrawColor(renderer.gameRenderer, 0, 0, 0, 0);
-        SDL_RenderFillRect(renderer.gameRenderer, &GameConfig::map_rect);
+        SDL_SetRenderDrawColor(renderer->gameRenderer, 211, 211, 211, 0);
+        SDL_RenderFillRect(renderer->gameRenderer, &GameConfig::status_rect);
+        SDL_SetRenderDrawColor(renderer->gameRenderer, 0, 0, 0, 0);
+        SDL_RenderFillRect(renderer->gameRenderer, &GameConfig::map_rect);
 
-        for(auto row : level) for(auto item : row) if(item != nullptr) item->draw();
-        for(auto player : players) player->draw();
-        for(auto enemy : enemies) enemy->draw();
-        for(auto bush : bushes) bush->draw();
-        for(auto bonus : bonuses) bonus->draw();
-        eagle->draw();
+        for(auto row : level) for(auto item : row) if(item != nullptr) item->draw(renderer);
+        for(auto player : players) player->draw(renderer);
+        for(auto enemy : enemies) enemy->draw(renderer);
+        for(auto bush : bushes) bush->draw(renderer);
+        for(auto bonus : bonuses) bonus->draw(renderer);
+        eagle->draw(renderer);
 
         if(gameOver) {
-            SDL_Point pos;
             pos.x = 140;
             pos.y = gameOverTextPos;
-            renderer.drawText(&pos, GameConfig::game_over_text, {255, 10, 10, 255}, 1);
+            renderer->drawText(&pos, GameConfig::game_over_text, {255, 10, 10, 255}, 1);
         }
 
-        SDL_Rect src = {944, 144, 16, 16};
-        SDL_Rect dst;
-        SDL_Point p_dst;
+        src = {944, 144, 16, 16};
 
-        for(int i = 0; i < enemyToKill; i++) {
+        for(i = 0; i < enemyToKill; i++) {
             dst = {GameConfig::status_rect.x + 8 + src.w * (i % 2), 5 + src.h * (i / 2), src.w, src.h};
-            renderer.drawObject(&src, &dst);
+            renderer->drawObject(&src, &dst);
         }
 
-        int i = 0;
+        i = 0;
         for(auto player : players) {
             dst = {GameConfig::status_rect.x + 5, i * 18 + 180, 16, 16};
             p_dst = {dst.x + dst.w + 2, dst.y + 3};
-            renderer.drawObject(&player->src_rect, &dst);
-            renderer.drawText(&p_dst, std::to_string(player->lives), {0, 0, 0, 255}, 3);
+            renderer->drawObject(&player->src_rect, &dst);
+            renderer->drawText(&p_dst, std::to_string(player->lives), {0, 0, 0, 255}, 3);
             i++;
         }
 
         src = {976, 64, 32, 32};
         dst = {GameConfig::status_rect.x + 8, 185 + playersCount * 18, src.w, src.h};
         p_dst = {dst.x + 10, dst.y + 26};
-        renderer.drawObject(&src, &dst);
-        renderer.drawText(&p_dst, std::to_string(currentLevel), {0, 0, 0, 255}, 2);
+        renderer->drawObject(&src, &dst);
+        renderer->drawText(&p_dst, std::to_string(currentLevel), {0, 0, 0, 255}, 2);
 
     }
-    renderer.flush();
+    renderer->flush();
 }
 
 void Playing::update(int dt) {
@@ -282,10 +277,6 @@ void Playing::update(int dt) {
 
         for(auto player : players) checkCollisionTankWithLevel(player, dt);
         for(auto enemy : enemies) checkCollisionTankWithLevel(enemy, dt);
-
-        int min_dist;
-        int dist;
-        SDL_Point target;
 
         for(auto enemy : enemies) {
             min_dist = 1000;

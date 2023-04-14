@@ -83,9 +83,9 @@ Enemy::Enemy(double x, double y, OBJECT_TYPE type) : Tank() {
     respawn();
 }
 
-void Enemy::draw() {
+void Enemy::draw(Renderer* renderer) {
     if(to_erase) return;
-    Tank::draw();
+    Tank::draw(renderer);
 }
 
 void Enemy::destroy() {

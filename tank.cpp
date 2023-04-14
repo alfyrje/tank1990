@@ -33,11 +33,11 @@ Tank::~Tank() {
     bullets.clear();
 }
 
-void Tank::draw() {
+void Tank::draw(Renderer* renderer) {
     if(to_erase) return;
-    Object::draw();
-    if(shieldFlag && shield != nullptr) shield->draw();
-    for(auto bullet : bullets) if(bullet != nullptr) bullet->draw();
+    Object::draw(renderer);
+    if(shieldFlag && shield != nullptr) shield->draw(renderer);
+    for(auto bullet : bullets) if(bullet != nullptr) bullet->draw(renderer);
 }
 
 void Tank::update(int dt) {

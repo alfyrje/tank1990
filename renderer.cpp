@@ -31,6 +31,7 @@ void Renderer::drawObject(SDL_Rect *texture_src, SDL_Rect *window_dest) {
 }
 
 void Renderer::flush() {
+
     SDL_RenderPresent(gameRenderer);
     SDL_RenderClear(gameRenderer);
 }
@@ -61,7 +62,4 @@ void Renderer::drawText(const SDL_Point* start, std::string text, SDL_Color text
     SDL_RenderCopy(gameRenderer, textTexture, NULL, &window_dest);
 }
 
-Renderer& Renderer::getRenderer() {
-    static Renderer renderer;
-    return renderer;
-}
+

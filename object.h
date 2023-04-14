@@ -1,6 +1,7 @@
 #ifndef object_h
 #define object_h
 
+#include "renderer.h"
 #include "SDL.h"
 
 enum OBJECT_TYPE {
@@ -25,7 +26,7 @@ public:
     Object();
     Object(double x, double y, OBJECT_TYPE type);
     virtual ~Object();
-    virtual void draw();
+    virtual void draw(Renderer* renderer);
     virtual void update(int dt);
     bool to_erase;
     SDL_Rect dest_rect;
@@ -41,6 +42,8 @@ public:
     int destroyFrame;
     int src_x;
     int src_y;
+    SDL_Point p_dst;
+    SDL_Rect dst;
 };
 
 

@@ -9,7 +9,7 @@ class Tank : public Object {
 public:
     Tank();
     virtual ~Tank();
-    virtual void draw();
+    virtual void draw(Renderer* renderer);
     virtual void update(int dt);
     virtual Bullet* fire();
     SDL_Rect nextCollisionRect(int dt);

@@ -44,10 +44,9 @@ Object::Object(double x, double y, OBJECT_TYPE type) {
 Object::~Object() {
 }
 
-void Object::draw() {
+void Object::draw(Renderer* renderer) {
     if(to_erase) return;
-    Renderer& renderer = Renderer::getRenderer();
-    renderer.drawObject(&src_rect, &dest_rect);
+    renderer->drawObject(&src_rect, &dest_rect);
 }
 
 void Object::update(int dt) {

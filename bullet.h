@@ -10,7 +10,7 @@ public:
     Bullet(double x, double y);
     void update(int dt);
     bool increased_damage;
-    void draw();
+    void draw(Renderer* renderer);
     int direction;
     double speed;
     bool collide;

@@ -14,8 +14,8 @@ Bonus::Bonus(double x, double y, OBJECT_TYPE type) : Object(x, y, type) {
     blinkFrame = 0;
 }
 
-void Bonus::draw() {
-    if(show) Object::draw();
+void Bonus::draw(Renderer* renderer) {
+    if(show) Object::draw(renderer);
 }
 
 void Bonus::update(int dt) {
