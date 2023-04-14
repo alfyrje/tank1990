@@ -2,6 +2,7 @@
 #include "playing.h"
 #include "gameconfig.h"
 
+#include<SDL.h>
 #include<iostream>
 
 Menu::Menu() {
@@ -24,6 +25,8 @@ Menu::~Menu() {
 }
 
 void Menu::draw(Renderer* renderer) {
+
+    SDL_RenderCopy(renderer->gameRenderer, renderer->backgroundTexture, NULL, NULL);
 
     SDL_Rect logo = {0, 260, 406, 72};
     dst = {(GameConfig::map_rect.w + GameConfig::status_rect.w - 406) / 2, 50, 406, 72};

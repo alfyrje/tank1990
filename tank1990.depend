@@ -39,7 +39,7 @@
 	<SDL_image.h>
 	<SDL.h>
 
-1681482315 c:\users\admin\desktop\cplusplus\mainprj\tank1990\renderer.h
+1681485652 c:\users\admin\desktop\cplusplus\mainprj\tank1990\renderer.h
 	<SDL.h>
 	<SDL_ttf.h>
 	<string>
@@ -100,7 +100,7 @@
 	"gameconfig.h"
 	<iostream>
 
-1681476996 c:\users\admin\desktop\cplusplus\mainprj\tank1990\menu.h
+1681485652 c:\users\admin\desktop\cplusplus\mainprj\tank1990\menu.h
 	<vector>
 	"player.h"
 	"appstate.h"

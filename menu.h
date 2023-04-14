@@ -18,6 +18,7 @@ public:
     std::vector<std::string> menuTexts;
     int menuIndex;
     Player* tankPointer;
+
 };
 
 #endif
