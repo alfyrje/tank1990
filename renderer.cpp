@@ -46,7 +46,7 @@ void Renderer::drawText(const SDL_Point* start, std::string text, SDL_Color text
     else text_surface = TTF_RenderText_Solid(font1, text.c_str(), text_color);
 
     textTexture = SDL_CreateTextureFromSurface(gameRenderer, text_surface);
-
+    SDL_FreeSurface(text_surface);
     SDL_Rect window_dest;
     if(start == nullptr) {
         window_dest.x = (GameConfig::map_rect.w + GameConfig::status_rect.w - text_surface->w)/2;

@@ -27,10 +27,10 @@
 	"renderer.h"
 	<SDL.h>
 
-1681468926 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\gameconfig.cpp
+1681469233 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\gameconfig.cpp
 	"gameconfig.h"
 
-1681469204 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\renderer.cpp
+1681469918 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\renderer.cpp
 	"renderer.h"
 	"gameconfig.h"
 	"main.h"
