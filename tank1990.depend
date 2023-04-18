@@ -58,7 +58,7 @@
 	"tank.h"
 	<SDL.h>
 
-1681484799 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\playing.cpp
+1681799071 source:c:\users\admin\desktop\cplusplus\mainprj\tank1990\playing.cpp
 	"playing.h"
 	"menu.h"
 	"renderer.h"
@@ -68,6 +68,7 @@
 	"brick.h"
 	"game.h"
 	"scores.h"
+	<SDL_mixer.h>
 	<chrono>
 	<SDL.h>
 	<fstream>

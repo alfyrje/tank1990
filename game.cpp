@@ -5,6 +5,7 @@
 #include "playing.h"
 #include "menu.h"
 
+#include <SDL_mixer.h>
 #include <bits/stdc++.h>
 #include <chrono>
 #include <SDL.h>
@@ -25,6 +26,7 @@ void Game::run() {
     if(SDL_Init(SDL_INIT_VIDEO) == 0) {
         IMG_Init(IMG_INIT_PNG);
         TTF_Init();
+        Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 2048);
         gameWindow = SDL_CreateWindow("Tank 1990", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
                                        GameConfig::window_rect.w, GameConfig::window_rect.h, SDL_WINDOW_SHOWN);
 

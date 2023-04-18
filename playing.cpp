@@ -8,6 +8,7 @@
 #include "game.h"
 #include "scores.h"
 
+#include<SDL_mixer.h>
 #include<chrono>
 #include<SDL.h>
 #include<fstream>
